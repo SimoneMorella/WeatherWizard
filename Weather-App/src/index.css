@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-* {
-    border: 1px solid red;
-}
+/* * {
+  border: 1px solid red;
+}  */

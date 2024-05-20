@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherWizard</title>
     <link rel="icon" type="image/png" href="src/img/ball-c.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body class="min-h-svh font-nunito text-white tracking-tight font-bold bg-gradient-to-l from-blue-300 to-fuchsia-400 bg-cover bg-fixed px-4">
-    <header class="mt-8 flex justify-center gap-1 items-center">
+<body class="min-h-svh flex flex-col font-nunito text-white tracking-tight font-bold bg-gradient-to-l from-blue-300 to-fuchsia-400 bg-cover bg-fixed px-4">
+    <header class="mt-8 mr-7 flex justify-center items-center">
         <img src="src/img/ball-c.png" alt="crystal ball" width="56">
         <h1 class="tracking-tight text-2xl font-extrabold text-white">Weather<span class="text-fuchsia-700">Wizard</span></h1>
     </header>
-    <main class="mt-24">
+    <main class="mt-24 flex-1">
         <section id="searchInit" class=" flex flex-col items-center py-4 px-2 rounded-lg bg-white bg-opacity-25">
             <h3 class="text-xl ">Oi! I'm the <span class="text-fuchsia-700">WeatherWizard</span></h3>
-            <p class="text-sm">Choose a location and I'll reveal the weather</p>
-            <form class="mt-3 w-full flex justify-center px-2">
-                <input type="text" class="text-gray-400 bg-white bg-opacity-70 rounded-lg p-3 w-full" placeholder="Think about a city...">
+            <p class="text-sm text-slate-500">Choose a location and I'll reveal the weather</p>
+            <form class="mt-3 w-full flex flex-col justify-center px-2 relative">
+                <input type="text" required class="text-slate-500 outline-none bg-white bg-opacity-70 rounded-lg p-3 w-full" placeholder="Think about a city...">
+                <img id="spinLoader" src="src/img/loading.svg" alt="loading" class="absolute right-5 top-[7px] hidden" width="35">
+                <button type="submit" class="absolute right-6 top-[12px] hidden"><i class='bx bxs-right-arrow text-[25px] text-fuchsia-700'></i></button>
             </form>
         </section>
+        <ul id="suggestions" class="mt-2 overflow-hidden flex flex-col gap-[2px] w-full rounded-lg bg-white bg-opacity-40"></ul>
     </main>
 
 
 
-
+    <footer class=" w-full flex  justify-center items-center gap-[2px] text-xs">
+        SimoneMorella
+        <a href="https://github.com/SimoneMorella" class="text-2xl transform hover:rotate-45 transition ease-out duration-300"><i class='bx bxl-github' id="gitico"></i></a>
+        <script>
+            document.write(new Date().getFullYear())
+        </script>
+    </footer>
     <script type="module" src="src/main.js"></script>
 </body>
 </html>

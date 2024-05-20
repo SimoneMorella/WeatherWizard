@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
+
+@layer components {
+  .btn-li {
+    @apply cursor-pointer p-3 text-gray-500 bg-white bg-opacity-75;
+  }
+}
+
+ /* * {
   border: 1px solid red;
-}  */
+} */

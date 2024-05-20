@@ -1,5 +1,5 @@
 import "./index.css";
-import { fetchLocationOnInput } from "./fetchLogic";
+import { fetchLocationOnInput, fetchForecastInfo } from "./fetchLogic";
 import {
   createSuggestions,
   resetSuggestions,
@@ -12,6 +12,7 @@ import {
 
 const inputBox = document.querySelector("form input");
 const suggestionsBox = document.querySelector("ul");
+const searchForm = document.querySelector("#initSearch");
 
 let search = "Barletta, Puglia";
 
@@ -31,19 +32,7 @@ async function fetchCurrentWeatherData(search) {
 // forecast function gives also current so use only 1 function
 //
 
-async function fetchForecastInfo(search) {
-  try {
-    let response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=329fad4d4a1143e7bd2154311241705&q=${search}&days=3`,
-      { mode: "cors" }
-    );
-    let weatherData = await response.json();
-    console.log(weatherData);
-    //insert the weather Data inside a box
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 
 
 inputBox.addEventListener("input", async () => {
@@ -62,8 +51,16 @@ inputBox.addEventListener("input", () => {
 suggestionsBox.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "li") {
     inputBox.value = e.target.textContent;
+    resetSuggestions();
   }
 });
+
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let query = inputBox.value;
+  fetchForecastInfo(query);
+})
+
 
 async function handleLocation(query) {
   let lData = await fetchLocationOnInput(query);

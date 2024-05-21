@@ -67,6 +67,8 @@ searchForm.addEventListener("submit", (e) => {
 })
 
 
+// this function later I put them in another module probably
+
 async function handleLocation(query) {
   let lData = await fetchLocationOnInput(query);
   await removeSubmitArrow();
@@ -92,4 +94,6 @@ function inputCheck(query) {
     removeSpinLoader();
   }
 }
+
+
 

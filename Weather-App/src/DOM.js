@@ -1,6 +1,13 @@
 const suggestions = document.querySelector("#suggestions");
 const spinLoader = document.querySelector("#spinLoader");
 const submitArrow = document.querySelector("button[type='submit']");
+const cityBox = document.querySelector("#cityName");
+const dateBox = document.querySelector("#date");
+const timeBox = document.querySelector("#time");
+const currentTempBox = document.querySelector("#currentTemp");
+const minMaxBox = document.querySelector("#min-max");
+const weatherStatusBox = document.querySelector("#weatherStatus");
+const statusImg = document.querySelector("#statusImg");
 
 export function createSuggestions(name, region) {
   const suggestion = document.createElement("li");

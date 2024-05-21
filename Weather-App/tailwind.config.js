@@ -63,6 +63,10 @@ export default {
             opacity: '1'
           }
         },
+      },
+      backgroundImage: {
+        dayBg: "url('src/img/dayBg.png')",
+        nightBg: "url('src/img/nightBg.png')"
       }
     },
     fontFamily: {

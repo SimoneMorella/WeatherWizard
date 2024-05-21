@@ -8,12 +8,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="min-h-svh flex flex-col font-nunito text-white tracking-tight font-bold bg-gradient-to-l from-blue-300 to-fuchsia-400 bg-cover bg-fixed px-4">
-    <main class="flex flex-col flex-1">
-        <header id="header" class="mt-8 mr-7 flex justify-center items-center">
+    <section id="leftPartLG">
+        <header id="header" class="mt-8 mr-7 flex justify-center items-center transition-all duration-300 ease-out">
             <img src="src/img/ball-c.png" alt="crystal ball" width="56">
             <h1 class="tracking-tight text-2xl font-extrabold text-white">Weather<span class="text-fuchsia-700">Wizard</span></h1>
         </header>
-        <section id="searchBox" class="mt-24 flex-1 relative">
+        <section id="searchBox" class="mt-24 flex-1 relative transition-all duration-300">
             <section id="searchInit" class=" flex flex-col items-center py-4 px-2 rounded-lg bg-white bg-opacity-25">
                 <h3 class="text-xl ">Oi! I'm the <span class="text-fuchsia-700">WeatherWizard</span></h3>
                 <p class="text-sm text-slate-500">Choose a location and I'll reveal the weather</p>
@@ -23,16 +23,57 @@
                     <button type="submit" class="absolute right-6 top-[12px] hidden"><i class='bx bxs-right-arrow text-[25px] text-fuchsia-700'></i></button>
                 </form>
             </section>
-            <ul id="suggestions" class="mt-2 absolute left-0 z-10 overflow-hidden flex flex-col gap-[2px] w-full rounded-lg bg-white bg-opacity-40"></ul>
-            <section>
-                fefe
+            <ul id="suggestions" class="mt-2 absolute left-0 z-10 overflow-hidden flex flex-col gap-[2px] w-full rounded-lg bg-white bg-opacity-60"></ul>
+        </section>
+        <section id="weatherData">
+            <section id="currentWBox" class="mt-4 w-full h-52 bg-dayBg bg-cover rounded-lg flex flex-col justify-between p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 id="cityName" class="text-lg font-extrabold">Barletta</h4>
+                        <p id="date" class="text-xs font-extrabold text-white text-opacity-60">Tuesday, May 21, 2024</p>
+                    </div>
+                    <div id="time" class="self-start text-sm">17:15</div>
+                </div>
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-col justify-around">
+                        <h3 id="currentTemp" class="text-4xl">28°c</h3>
+                        <div>
+                            <p id="min-max" class="text-sm font-extrabold">18°c / 28°c</p>
+                            <p id="weatherStatus" class="text-xs font-extrabold text-white text-opacity-60">Few Clouds</p>
+                        </div>
+                    </div>
+                    <img id="statusImg" src="src/img/ball-c.png" alt="weather Status Icon" width="100" height="60">
+                </div>
             </section>
         </section>
+    </section>
+    <section id="rightPartLG" class="flex-1 mt-4 w-full flex flex-col">
+        <section id="weatherInfo" class="w-full rounded-lg overflow-hidden bg-white bg-opacity-20 text-gray-500 flex flex-col gap-[2px]">
+            <div class="flex w-full justify-between p-3 bg-white bg-opacity-30">
+                <p class="flex items-center gap-2"><i class='bx bxs-thermometer text-xl'></i> Temperature felt</p>
+                <p id="feltTemp" class="flex items-center">29°c</p>
+            </div>
+            <div class="flex w-full justify-between p-2 bg-white bg-opacity-30">
+                <p class="flex items-center gap-2"><i class='bx bx-cloud-light-rain text-xl'></i> Chance of Rain</p>
+                <p id="rainChange" class="flex items-center">30%</p>
+            </div>
+            <div class="flex w-full justify-between p-2 bg-white bg-opacity-30">
+                <p class="flex items-center gap-2"><i class='bx bx-droplet text-xl'></i> Humidity</p>
+                <p id="humidity" class="flex items-center">53%</p>
+            </div>
+            <div class="flex w-full justify-between p-2 bg-white bg-opacity-30">
+                <p class="flex items-center gap-2"><i class='bx bx-wind text-xl'></i> Wind Speed</p>
+                <p id="windSpeed" class="flex items-center">29°c</p>
+            </div>
+            <div class="flex w-full justify-between p-2 bg-white bg-opacity-30">
+                <p class="flex items-center gap-2"><i class='bx bx-sun text-xl' ></i> UV Index</p>
+                <p id="feltTemp" class="flex items-center">3</p>
+            </div>
+        </section>
+    </section>
 
-    </main>
 
-
-ADD THE MARGIN TOP ANIMATION AND THEN THE SECOND PHASE!
+<!-- ADD THE MARGIN TOP ANIMATION AND THEN THE SECOND PHASE! -->
 
     <footer class=" w-full flex justify-center items-center gap-[2px] text-xs">
         SimoneMorella

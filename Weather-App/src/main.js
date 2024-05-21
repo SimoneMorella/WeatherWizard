@@ -9,6 +9,9 @@ import {
   removeSubmitArrow,
   showSuggestions
 } from "./DOM";
+import { 
+  animateHeader,
+  animateSearchBox } from "./animScript";
 
 const inputBox = document.querySelector("form input");
 const suggestionsBox = document.querySelector("ul");
@@ -59,6 +62,8 @@ searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let query = inputBox.value;
   fetchForecastInfo(query);
+  animateHeader();
+  animateSearchBox();
 })
 
 

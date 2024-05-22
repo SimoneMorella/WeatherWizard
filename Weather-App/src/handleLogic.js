@@ -1,4 +1,4 @@
-import { parse, format } from "date-fns";
+import { parse, format, isAfter, isBefore } from "date-fns";
 import { fetchLocationOnInput, fetchForecastInfo } from "./fetchLogic";
 import { manageCurrentWeatherValues, manageInfoBoxValues } from "./DOM";
 import {
@@ -9,6 +9,7 @@ import {
   showSubmitArrow,
   removeSubmitArrow,
   showSuggestions,
+  changeWBoxBg,
 } from "./DOM";
 
 export async function handleLocation(query) {
@@ -45,6 +46,13 @@ export async function handleWeatherData(query) {
   console.log(currentInfo);
   let forecastInfo = weatherData.forecast.forecastday;
   console.log(forecastInfo);
+  changeWBoxBg(
+    checkTimeForBg(
+      locationInfo.localtime,
+      forecastInfo[0].astro.sunset,
+      forecastInfo[0].astro.sunrise
+    )
+  );
   manageCurrentWeatherValues(
     locationInfo.name,
     locationInfo.region,
@@ -74,4 +82,19 @@ export function formatTimeForCurrent(date) {
   let parseData = parse(date, "yyyy-MM-dd HH:mm", new Date());
   let formattedTime = format(parseData, "HH:mm");
   return formattedTime;
+}
+
+function checkTimeForBg(time, sunsetH, dawnH) {
+  const parseData = parse(time, "yyyy-MM-dd HH:mm", new Date());
+  const formattedSunset = parse(sunsetH, "hh:mm a", new Date());
+  const formattedDawn = parse(dawnH, "hh:mm a", new Date());
+  console.log(parseData, formattedSunset, formattedDawn)
+  if (
+    isAfter(parseData, formattedSunset) ||
+    isBefore(parseData, formattedDawn)
+  ) {
+    return "bg-nightBg";
+  } else {
+    return "bg-dayBg";
+  }
 }

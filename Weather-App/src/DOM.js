@@ -3,6 +3,7 @@ import { formatDateForCurrent, formatTimeForCurrent } from "./handleLogic";
 const suggestions = document.querySelector("#suggestions");
 const spinLoader = document.querySelector("#spinLoader");
 const submitArrow = document.querySelector("button[type='submit']");
+const currentWeatherBox = document.querySelector("#currentWBox");
 const cityBox = document.querySelector("#cityName");
 const dateBox = document.querySelector("#date");
 const timeBox = document.querySelector("#time");
@@ -145,6 +146,11 @@ export function manageThirdDayValues(
   dayThreeMaxBox.textContent = dayThreeMax;
 }
 
+
+export function changeWBoxBg(bgProperty) {
+  currentWeatherBox.classList.remove("bg-dayBg", "bg-nightBg");
+  currentWeatherBox.classList.add(bgProperty);
+}
 
 export function createSuggestions(name, region) {
   const suggestion = document.createElement("li");

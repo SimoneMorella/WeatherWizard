@@ -18,8 +18,9 @@ export async function fetchForecastInfo(search) {
         { mode: "cors" }
       );
       let weatherData = await response.json();
-      console.log(weatherData);
-      //insert the weather Data inside a box
+      return weatherData;
+      // catch errors, like if I don't get nothing or smth 
+      // maybe then I put in the handle func how to do
     } catch (error) {
       console.log(error);
     }

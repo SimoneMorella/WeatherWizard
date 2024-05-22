@@ -11,6 +11,7 @@ export default {
         'fadeIn': 'fadingIn 0.3s ease-in forwards',
         'fadeOutNoScale': 'fadingOutNoScale 0.3s ease-in forwards',
         'fadeInNoScale': 'fadingInNoScale 0.3s ease-in forwards',
+        'fadeUp': 'fadeUp 1s ease-in-out forwards'
       },
       keyframes: {
         fadingOut: {
@@ -63,6 +64,16 @@ export default {
             opacity: '1'
           }
         },
+        fadeUp: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(800px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        }
       },
       backgroundImage: {
         dayBg: "url('src/img/dayBg.png')",

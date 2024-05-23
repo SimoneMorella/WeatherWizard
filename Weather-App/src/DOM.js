@@ -18,16 +18,16 @@ const windSpeedBox = document.querySelector("#windSpeed");
 const uvIndexBox = document.querySelector("#uvIndex");
 const hourOneBox = document.querySelector("#hour-one");
 const hourOneImgBox = document.querySelector("#hour-one-img");
-const hourOneMinBox = document.querySelector("#hour-one-min");
-const hourOneMaxBox = document.querySelector("#hour-one-max");
+const hourOneRainBox = document.querySelector("#hour-one-rain");
+const hourOneTempBox = document.querySelector("#hour-one-temp");
 const hourTwoBox = document.querySelector("#hour-two");
 const hourTwoImgBox = document.querySelector("#hour-two-img");
-const hourTwoMinBox = document.querySelector("#hour-two-min");
-const hourTwoMaxBox = document.querySelector("#hour-two-max");
+const hourTwoRainBox = document.querySelector("#hour-two-rain");
+const hourTwoTempBox = document.querySelector("#hour-two-temp");
 const hourThreeBox = document.querySelector("#hour-three");
 const hourThreeImgBox = document.querySelector("#hour-three-img");
-const hourThreeMinBox = document.querySelector("#hour-three-min");
-const hourThreeMaxBox = document.querySelector("#hour-three-max");
+const hourThreeRainBox = document.querySelector("#hour-three-rain");
+const hourThreeTempBox = document.querySelector("#hour-three-temp");
 const dayOneBox = document.querySelector("#day-one");
 const dayOneImgBox = document.querySelector("#day-one-img");
 const dayOneMinBox = document.querySelector("#day-one-min");
@@ -77,37 +77,37 @@ export function manageInfoBoxValues(
 export function manageFirstHourValues(
   hourOne,
   hourOneImg,
-  hourOneMin,
-  hourOneMax
+  hourOneRain,
+  hourOneTemp
 ) {
   hourOneBox.textContent = hourOne; // write function to define which one is the next hour
-  hourOneImgBox.src = `${hourOneImg}`;
-  hourOneMinBox.textContent = hourOneMin;
-  hourOneMaxBox.textContent = hourOneMax;
+  hourOneImgBox.src = hourOneImg;
+  hourOneRainBox.textContent = `${hourOneRain}%`;
+  hourOneTempBox.textContent = `${hourOneTemp}°c`;
 }
 
 export function manageSecondHourValues(
   hourTwo,
   hourTwoImg,
-  hourTwoMin,
-  hourTwoMax
+  hourTwoRain,
+  hourTwoTemp
 ) {
   hourTwoBox.textContent = hourTwo; 
-  hourTwoImgBox.src = `${hourTwoImg}`;
-  hourTwoMinBox.textContent = hourTwoMin;
-  hourTwoMaxBox.textContent = hourTwoMax;
+  hourTwoImgBox.src = hourTwoImg;
+  hourTwoRainBox.textContent = `${hourTwoRain}%`;
+  hourTwoTempBox.textContent = `${hourTwoTemp}°c`;
 }
 
 export function manageThirdHourValues(
   hourThree,
   hourThreeImg,
-  hourThreeMin,
-  hourThreeMax
+  hourThreeRain,
+  hourThreeTemp
 ) {
   hourThreeBox.textContent = hourThree; 
-  hourThreeImgBox.src = `${hourThreeImg}`;
-  hourThreeMinBox.textContent = hourThreeMin;
-  hourThreeMaxBox.textContent = hourThreeMax;
+  hourThreeImgBox.src = hourThreeImg;
+  hourThreeRainBox.textContent = `${hourThreeRain}%`;
+  hourThreeTempBox.textContent = `${hourThreeTemp}°c`;
 }
 
 export function manageFirstDayValues(

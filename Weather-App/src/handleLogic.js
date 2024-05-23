@@ -1,6 +1,12 @@
 import { parse, format, isAfter, isBefore } from "date-fns";
 import { fetchLocationOnInput, fetchForecastInfo } from "./fetchLogic";
-import { manageCurrentWeatherValues, manageInfoBoxValues } from "./DOM";
+import {
+  manageCurrentWeatherValues,
+  manageInfoBoxValues,
+  manageFirstHourValues,
+  manageSecondHourValues,
+  manageThirdHourValues,
+} from "./DOM";
 import {
   createSuggestions,
   resetSuggestions,
@@ -46,6 +52,8 @@ export async function handleWeatherData(query) {
   console.log(currentInfo);
   let forecastInfo = weatherData.forecast.forecastday;
   console.log(forecastInfo);
+  let nextHours = giveNextThreeHours(locationInfo.localtime, forecastInfo);
+  console.log(nextHours);
   changeWBoxBg(
     checkTimeForBg(
       locationInfo.localtime,
@@ -70,6 +78,24 @@ export async function handleWeatherData(query) {
     currentInfo.wind_kph,
     currentInfo.uv
   );
+  manageFirstHourValues(
+    parseHour(nextHours[0].time),
+    nextHours[0].condition.icon,
+    nextHours[0].precip_in,
+    nextHours[0].temp_c
+  );
+  manageSecondHourValues(
+    parseHour(nextHours[1].time),
+    nextHours[1].condition.icon,
+    nextHours[1].precip_in,
+    nextHours[1].temp_c
+  );
+  manageThirdHourValues(
+    parseHour(nextHours[2].time),
+    nextHours[2].condition.icon,
+    nextHours[2].precip_in,
+    nextHours[2].temp_c
+  );
 }
 
 export function formatDateForCurrent(date) {
@@ -88,7 +114,7 @@ function checkTimeForBg(time, sunsetH, dawnH) {
   const parseData = parse(time, "yyyy-MM-dd HH:mm", new Date());
   const formattedSunset = parse(sunsetH, "hh:mm a", new Date());
   const formattedDawn = parse(dawnH, "hh:mm a", new Date());
-  console.log(parseData, formattedSunset, formattedDawn)
+  console.log(parseData, formattedSunset, formattedDawn);
   if (
     isAfter(parseData, formattedSunset) ||
     isBefore(parseData, formattedDawn)
@@ -98,3 +124,31 @@ function checkTimeForBg(time, sunsetH, dawnH) {
     return "bg-dayBg";
   }
 }
+
+function giveNextThreeHours(time, forecastH) {
+  const slot = 3;
+  let hourNum = parseHour(time);
+  let resultHoursInfo = [];
+  if (hourNum < 21) {
+    resultHoursInfo = forecastH[0].hour.slice(hourNum + 1, hourNum + 4);
+    return resultHoursInfo;
+  } else if (hourNum >= 21 && hourNum < 23) {
+    let hDiff = 23 - hourNum;
+    resultHoursInfo.push(
+      ...forecastH[0].hour.slice(hourNum + 1, hourNum + 1 + hDiff)
+    );
+    resultHoursInfo.push(...forecastH[1].hour.slice(0, slot - hDiff));
+    return resultHoursInfo;
+  } else if (hourNum === 23) {
+    resultHoursInfo.push(...forecastH[1].hour.slice(0, slot));
+    return resultHoursInfo;
+  }
+}
+
+function parseHour(time) {
+  let parseData = parse(time, "yyyy-MM-dd HH:mm", new Date());
+  let hourNum = parseInt(format(parseData, "HH"));
+  return hourNum;
+}
+
+

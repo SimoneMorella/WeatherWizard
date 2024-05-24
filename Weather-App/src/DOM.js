@@ -40,6 +40,9 @@ const dayThreeBox = document.querySelector("#day-three");
 const dayThreeImgBox = document.querySelector("#day-three-img");
 const dayThreeMinBox = document.querySelector("#day-three-min");
 const dayThreeMaxBox = document.querySelector("#day-three-max");
+const errorDialog = document.querySelector("#errorDialog");
+const errorMsg = document.querySelector("#errorMsg");
+const closeBtn = document.querySelector("#closeBtn");
 
 export function manageCurrentWeatherValues(
   city,
@@ -117,9 +120,9 @@ export function manageFirstDayValues(
   dayOneMax
 ) {
   dayOneBox.textContent = dayOne; // write function to define which one is the next day
-  dayOneImgBox.src = `${dayOneImg}`;
-  dayOneMinBox.textContent = dayOneMin;
-  dayOneMaxBox.textContent = dayOneMax;
+  dayOneImgBox.src = dayOneImg;
+  dayOneMinBox.textContent = `${dayOneMin}°c`;
+  dayOneMaxBox.textContent = `${dayOneMax}°c`;
 }
 
 export function manageSecondDayValues(
@@ -129,9 +132,9 @@ export function manageSecondDayValues(
   dayTwoMax
 ) {
   dayTwoBox.textContent = dayTwo; 
-  dayTwoImgBox.src = `${dayTwoImg}`;
-  dayTwoMinBox.textContent = dayTwoMin;
-  dayTwoMaxBox.textContent = dayTwoMax;
+  dayTwoImgBox.src = dayTwoImg;
+  dayTwoMinBox.textContent = `${dayTwoMin}°c`;
+  dayTwoMaxBox.textContent = `${dayTwoMax}°c`;
 }
 
 export function manageThirdDayValues(
@@ -141,9 +144,9 @@ export function manageThirdDayValues(
   dayThreeMax
 ) {
   dayThreeBox.textContent = dayThree; 
-  dayThreeImgBox.src = `${dayThreeImg}`;
-  dayThreeMinBox.textContent = dayThreeMin;
-  dayThreeMaxBox.textContent = dayThreeMax;
+  dayThreeImgBox.src = dayThreeImg;
+  dayThreeMinBox.textContent = `${dayThreeMin}°c`;
+  dayThreeMaxBox.textContent = `${dayThreeMax}°c`;
 }
 
 
@@ -216,3 +219,18 @@ export function showSuggestions() {
   suggestions.classList.add("animate-fadeInNoScale");
   suggestions.classList.remove("hidden");
 }
+
+export function showError(error) {
+  errorDialog.showModal();
+  errorDialog.classList.add("flex", "flex-col", "items-center", "gap-2", "animate-fadeIn")
+  errorMsg.textContent = error;
+
+}
+
+closeBtn.addEventListener("click", async () => {
+  errorDialog.classList.remove("animate-fadeIn");
+  errorDialog.classList.add("animate-fadeOut");
+  await delay();
+  errorDialog.close();
+  errorDialog.classList.remove("flex", "flex-col", "items-center", "gap-2");
+})

@@ -6,6 +6,10 @@ import {
   manageFirstHourValues,
   manageSecondHourValues,
   manageThirdHourValues,
+  manageFirstDayValues,
+  manageSecondDayValues,
+  manageThirdDayValues,
+  showError
 } from "./DOM";
 import {
   createSuggestions,
@@ -45,57 +49,80 @@ export function inputCheck(query) {
 }
 
 export async function handleWeatherData(query) {
-  let weatherData = await fetchForecastInfo(query);
-  let locationInfo = weatherData.location;
-  console.log(locationInfo);
-  let currentInfo = weatherData.current;
-  console.log(currentInfo);
-  let forecastInfo = weatherData.forecast.forecastday;
-  console.log(forecastInfo);
-  let nextHours = giveNextThreeHours(locationInfo.localtime, forecastInfo);
-  console.log(nextHours);
-  changeWBoxBg(
-    checkTimeForBg(
+  try {
+    let weatherData = await fetchForecastInfo(query);
+    if (weatherData === undefined) throw new Error("Location not found!");
+    let locationInfo = weatherData.location;
+    let currentInfo = weatherData.current;
+    let forecastInfo = weatherData.forecast.forecastday;
+    let nextHours = giveNextThreeHours(locationInfo.localtime, forecastInfo);
+    changeWBoxBg(
+      checkTimeForBg(
+        locationInfo.localtime,
+        forecastInfo[0].astro.sunset,
+        forecastInfo[0].astro.sunrise
+      )
+    );
+    manageCurrentWeatherValues(
+      locationInfo.name,
+      locationInfo.region,
       locationInfo.localtime,
-      forecastInfo[0].astro.sunset,
-      forecastInfo[0].astro.sunrise
+      currentInfo.temp_c,
+      forecastInfo[0].day.mintemp_c,
+      forecastInfo[0].day.maxtemp_c,
+      currentInfo.condition.text,
+      currentInfo.condition.icon
+    );
+    manageInfoBoxValues(
+      currentInfo.feelslike_c,
+      forecastInfo[0].hour[parseHour(locationInfo.localtime)].chance_of_rain,
+      currentInfo.humidity,
+      currentInfo.wind_kph,
+      currentInfo.uv
+    );
+    manageFirstHourValues(
+      parseHour(nextHours[0].time),
+      nextHours[0].condition.icon,
+      nextHours[0].chance_of_rain,
+      nextHours[0].temp_c
+    );
+    manageSecondHourValues(
+      parseHour(nextHours[1].time),
+      nextHours[1].condition.icon,
+      nextHours[1].chance_of_rain,
+      nextHours[1].temp_c
+    );
+    manageThirdHourValues(
+      parseHour(nextHours[2].time),
+      nextHours[2].condition.icon,
+      nextHours[2].chance_of_rain,
+      nextHours[2].temp_c
+    );
+    manageFirstDayValues(
+       getDay(forecastInfo[1].date),
+       forecastInfo[1].day.condition.icon,
+       forecastInfo[1].day.mintemp_c,
+       forecastInfo[1].day.maxtemp_c
+    );
+    manageSecondDayValues(
+      getDay(forecastInfo[2].date),
+      forecastInfo[2].day.condition.icon,
+      forecastInfo[2].day.mintemp_c,
+      forecastInfo[2].day.maxtemp_c
+    );
+    manageThirdDayValues(
+      getDay(forecastInfo[3].date),
+      forecastInfo[3].day.condition.icon,
+      forecastInfo[3].day.mintemp_c,
+      forecastInfo[3].day.maxtemp_c
     )
-  );
-  manageCurrentWeatherValues(
-    locationInfo.name,
-    locationInfo.region,
-    locationInfo.localtime,
-    currentInfo.temp_c,
-    forecastInfo[0].day.mintemp_c,
-    forecastInfo[0].day.maxtemp_c,
-    currentInfo.condition.text,
-    currentInfo.condition.icon
-  );
-  manageInfoBoxValues(
-    currentInfo.feelslike_c,
-    currentInfo.precip_in,
-    currentInfo.humidity,
-    currentInfo.wind_kph,
-    currentInfo.uv
-  );
-  manageFirstHourValues(
-    parseHour(nextHours[0].time),
-    nextHours[0].condition.icon,
-    nextHours[0].precip_in,
-    nextHours[0].temp_c
-  );
-  manageSecondHourValues(
-    parseHour(nextHours[1].time),
-    nextHours[1].condition.icon,
-    nextHours[1].precip_in,
-    nextHours[1].temp_c
-  );
-  manageThirdHourValues(
-    parseHour(nextHours[2].time),
-    nextHours[2].condition.icon,
-    nextHours[2].precip_in,
-    nextHours[2].temp_c
-  );
+    return true;
+
+  } catch(error) {
+    showError(error);
+    return false;
+  }
+  
 }
 
 export function formatDateForCurrent(date) {
@@ -114,7 +141,6 @@ function checkTimeForBg(time, sunsetH, dawnH) {
   const parseData = parse(time, "yyyy-MM-dd HH:mm", new Date());
   const formattedSunset = parse(sunsetH, "hh:mm a", new Date());
   const formattedDawn = parse(dawnH, "hh:mm a", new Date());
-  console.log(parseData, formattedSunset, formattedDawn);
   if (
     isAfter(parseData, formattedSunset) ||
     isBefore(parseData, formattedDawn)
@@ -151,4 +177,8 @@ function parseHour(time) {
   return hourNum;
 }
 
-
+function getDay(date) {
+  let parseData = parse(date, "yyyy-MM-dd", new Date());
+  let day = format(parseData, "EEE");
+  return day;
+}

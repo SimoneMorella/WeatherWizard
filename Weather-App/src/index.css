@@ -13,3 +13,7 @@
  /* * {
   border: 1px solid red;
 } */
+
+::backdrop {
+  backdrop-filter: blur(3px);
+}

@@ -19,10 +19,6 @@ export default {
             opacity: '1',
             transform: 'scale(1)'
           },
-          '50%': {
-            opacity: '0.5',
-            transform: 'scale(0.5)'
-          },
           '100%': {
             opacity: '0',
             transform: 'scale(0)'
@@ -32,10 +28,6 @@ export default {
           '0%': {
             opacity: '0',
             transform: 'scale(0)'
-          },
-          '50%': {
-            opacity: '0.5',
-            transform: 'scale(0.5)'
           },
           '100%': {
             opacity: '1',

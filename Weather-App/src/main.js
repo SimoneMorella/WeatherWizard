@@ -15,7 +15,6 @@ const searchForm = document.querySelector("#initSearch");
 inputBox.addEventListener("input", async () => {
   let query = inputBox.value;
   if (query.length === 0) return;
-  console.log(query.length);
   inputCheck(query);
   await handleLocation(query);
   inputCheck(inputBox.value);
@@ -32,18 +31,22 @@ suggestionsBox.addEventListener("click", (e) => {
   }
 });
 
-searchForm.addEventListener("submit", (e) => {
+searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   let query = inputBox.value;
-  handleWeatherData(query);
-  animateHeader();
-  animateSearchBox();
-  animateCurrWeatherBox();
-  animateWeatherInfoBox();
+  // maybe I can add a loading shit 
+  const weatherCheck = await handleWeatherData(query);  
+  console.log(weatherCheck);
+  if (weatherCheck) {
+    animateHeader();
+    animateSearchBox();
+    animateCurrWeatherBox();
+    animateWeatherInfoBox();
+  }
+  inputBox.value = "";
   // add inputBox reset later
 })
 
-// this function later I put them in another module probably
 
 
 

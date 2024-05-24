@@ -48,7 +48,16 @@
                 </section>
             </section>
         </section>
-        <!-- here must put flex after delete hidden -->
+        <dialog id="errorDialog" class="rounded-lg bg-white bg-opacity-25 p-4">
+            <button id="closeBtn" class="text-2xl self-end"><i class='bx bxs-x-circle text-fuchsia-700'></i></button>
+            <img src="src/img/error404.svg" alt="error-404" width="200">
+            <div id="errorMsg" class="font-extrabold text-md text-gray-500">Location Not Found!</div>
+        </dialog>
+        <!-- here I put a dialog for error 404 to open
+        only when I search something that gives an error
+        I put some animation to it and the possibility to close it
+        then i maybe solve the triangle search stuff to disappear (maybe)
+        and then responsive and I finished -->
         <section id="rightPartLG" class="mt-4 w-full flex-col hidden">
             <section id="weatherInfo" class="w-full rounded-lg overflow-hidden bg-white bg-opacity-20 text-gray-500 flex flex-col gap-[2px]">
                 <div class="flex w-full justify-between px-3 py-2 bg-white bg-opacity-30">
@@ -81,8 +90,10 @@
                             <img id="hour-one-img" src="src/img/ball-c.png" alt="hour 1 weather" width="45">
                             <div class="text-[12px] flex flex-col items-center">
                                 <span id="hour-one-temp">28°c</span>
-                                <span id="hour-one-rain" class="text-gray-500">18°c </span>
-
+                                <div class="text-gray-500">
+                                    <i class='bx bx-cloud-light-rain'></i>
+                                    <span id="hour-one-rain">18°c </span>
+                                </div>
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
@@ -90,8 +101,10 @@
                             <img id="hour-two-img" src="src/img/ball-c.png" alt="hour 2 weather" width="45">
                             <div class="text-[12px] flex flex-col items-center">
                                 <span id="hour-two-temp">28°c</span>
-                                <span id="hour-two-rain" class="text-gray-500">18°c </span>
-
+                                <div class="text-gray-500">
+                                    <i class='bx bx-cloud-light-rain'></i>
+                                    <span id="hour-two-rain">18°c </span>
+                                </div>
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
@@ -99,8 +112,10 @@
                             <img id="hour-three-img" src="src/img/ball-c.png" alt="hour 3 weather" width="45">
                             <div class="text-[12px] flex flex-col items-center">
                                 <span id="hour-three-temp">28°c</span>
-                                <span id="hour-three-rain" class="text-gray-500">18°c </span>
-
+                                <div class="text-gray-500">
+                                    <i class='bx bx-cloud-light-rain'></i>
+                                    <span id="hour-three-rain">18°c </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,24 +127,27 @@
                             <div id="day-one" class="">1</div>
                             <img id="day-one-img" src="src/img/ball-c.png" alt="day 1 weather" width="45">
                             <div class="text-[12px] flex flex-col items-center">
-                                <span id="day-one-min" class="text-gray-500">18°c </span>
                                 <span id="day-one-max">28°c</span>
+                                <span id="day-one-min" class="text-gray-500">18°c </span>
+                                
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
                             <div id="day-two" class="">2</div>
                             <img id="day-two-img" src="src/img/ball-c.png" alt="day 2 weather" width="45">
                             <div class="text-[12px] flex flex-col items-center">
-                                <span id="day-two-min" class="text-gray-500">18°c </span>
                                 <span id="day-two-max">28°c</span>
+                                <span id="day-two-min" class="text-gray-500">18°c </span>
+                                
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
                             <div id="day-three" class="">3</div>
                             <img id="day-three-img" src="src/img/ball-c.png" alt="day 3 weather" width="45">
                             <div class="text-[12px] flex flex-col items-center">
-                                <span id="day-three-min" class="text-gray-500">18°c </span>
                                 <span id="day-three-max">28°c</span>
+                                <span id="day-three-min" class="text-gray-500">18°c </span>
+                                
                             </div>
                         </div>
                     </div>

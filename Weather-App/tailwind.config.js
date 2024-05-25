@@ -9,8 +9,8 @@ export default {
       animation: {
         'fadeOut': 'fadingOut 0.3s ease-out forwards',
         'fadeIn': 'fadingIn 0.3s ease-in forwards',
-        'fadeOutNoScale': 'fadingOutNoScale 0.3s ease-in forwards',
-        'fadeInNoScale': 'fadingInNoScale 0.3s ease-in forwards',
+        'fadeOutNoScale': 'fadingOutNoScale 0.4s ease-in',
+        'fadeInNoScale': 'fadingInNoScale 0.4s ease-in',
         'fadeUp': 'fadeUp 1s ease-in-out forwards'
       },
       keyframes: {

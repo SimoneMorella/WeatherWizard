@@ -43,6 +43,11 @@ const dayThreeMaxBox = document.querySelector("#day-three-max");
 const errorDialog = document.querySelector("#errorDialog");
 const errorMsg = document.querySelector("#errorMsg");
 const closeBtn = document.querySelector("#closeBtn");
+const mainBox = document.querySelector("#mainBox");
+const header = document.querySelector("#header");
+const searchBox = document.querySelector("#searchBox");
+const currentWDataBox = document.querySelector("#weatherData");
+const leftPartBox = document.querySelector("#leftPartLG");
 
 export function manageCurrentWeatherValues(
   city,
@@ -220,11 +225,25 @@ export function showSuggestions() {
   suggestions.classList.remove("hidden");
 }
 
+export async function animateChangeLayoutForLG() {
+  mainBox.classList.add("animate-fadeOutNoScale");
+  await delay();
+  header.classList.add("hidden");
+  leftPartBox.classList.add("lg:h-[620px]", "lg:bg-white", "lg:bg-opacity-15", "lg:rounded-lg");
+  console.log(leftPartBox.offsetHeight);
+  mainBox.classList.remove("animate-fadeOutNoScale")
+  mainBox.classList.add("animate-fadeInNoScale");
+  header.classList.remove("mt-8", "mr-7");
+  searchBox.classList.remove("mt-24", "lg:w-[500px]");
+  searchBox.classList.add("lg:w-full");
+  currentWDataBox.classList.add("lg:w-full");
+  mainBox.classList.add("lg:grid", "lg:grid-cols-2", "lg:gap-2", "lg:justify-center", "lg:items-center")
+}
+
 export function showError(error) {
   errorDialog.showModal();
   errorDialog.classList.add("flex", "flex-col", "items-center", "gap-2", "animate-fadeIn", "sm:gap-4")
   errorMsg.textContent = error;
-
 }
 
 closeBtn.addEventListener("click", async () => {

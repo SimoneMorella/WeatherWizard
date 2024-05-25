@@ -27,3 +27,6 @@ export function animateWeatherInfoBox() {
     weatherInfoBox.classList.add("flex");
     weatherInfoBox.classList.add("animate-fadeUp");
 }
+
+
+

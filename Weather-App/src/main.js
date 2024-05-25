@@ -1,11 +1,12 @@
 import "./index.css";
 import { handleLocation, handleWeatherData, inputCheck } from "./handleLogic";
-import { resetSuggestions } from "./DOM";
+import { resetSuggestions, animateChangeLayoutForLG } from "./DOM";
 import { 
   animateHeader,
   animateSearchBox,
   animateCurrWeatherBox,
-  animateWeatherInfoBox } from "./animScript";
+  animateWeatherInfoBox, 
+  } from "./animScript";
 
 const inputBox = document.querySelector("form input");
 const suggestionsBox = document.querySelector("ul");
@@ -37,8 +38,12 @@ searchForm.addEventListener("submit", async (e) => {
   // maybe I can add a loading shit 
   const weatherCheck = await handleWeatherData(query);  
   if (weatherCheck) {
-    animateHeader();
-    animateSearchBox();
+    if (!window.matchMedia("(min-width: 1024px)").matches) {
+      animateHeader();
+      animateSearchBox();
+    } else {
+      animateChangeLayoutForLG();
+    }
     animateCurrWeatherBox();
     animateWeatherInfoBox();
   }

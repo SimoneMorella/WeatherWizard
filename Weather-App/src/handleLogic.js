@@ -21,6 +21,8 @@ import {
   showSuggestions,
   changeWBoxBg,
 } from "./DOM";
+import nightBg from "./img/nightBg.png";
+import dayBg from "./img/dayBg.png";
 
 export async function handleLocation(query) {
   let lData = await fetchLocationOnInput(query);
@@ -145,9 +147,9 @@ function checkTimeForBg(time, sunsetH, dawnH) {
     isAfter(parseData, formattedSunset) ||
     isBefore(parseData, formattedDawn)
   ) {
-    return "bg-nightBg";
+    return nightBg;
   } else {
-    return "bg-dayBg";
+    return dayBg;
   }
 }
 

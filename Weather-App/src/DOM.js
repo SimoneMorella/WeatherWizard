@@ -1,5 +1,6 @@
 import { formatDateForCurrent, formatTimeForCurrent } from "./handleLogic";
 
+
 const suggestions = document.querySelector("#suggestions");
 const spinLoader = document.querySelector("#spinLoader");
 const submitArrow = document.querySelector("button[type='submit']");
@@ -155,9 +156,9 @@ export function manageThirdDayValues(
 }
 
 
-export function changeWBoxBg(bgProperty) {
-  currentWeatherBox.classList.remove("bg-dayBg", "bg-nightBg");
-  currentWeatherBox.classList.add(bgProperty);
+export function changeWBoxBg(bgImg) {
+  currentTempBox.style.backgroundImage = "none";
+  currentWeatherBox.style.backgroundImage = `url(${bgImg})`;
 }
 
 export function createSuggestions(name, region) {
@@ -230,7 +231,6 @@ export async function animateChangeLayoutForLG() {
   await delay();
   header.classList.add("hidden");
   leftPartBox.classList.add("lg:h-[620px]", "lg:bg-white", "lg:bg-opacity-15", "lg:rounded-lg");
-  console.log(leftPartBox.offsetHeight);
   mainBox.classList.remove("animate-fadeOutNoScale")
   mainBox.classList.add("animate-fadeInNoScale");
   header.classList.remove("mt-8", "mr-7");

@@ -49,10 +49,18 @@ searchForm.addEventListener("submit", async (e) => {
   }
   inputBox.value = "";
   inputCheck(inputBox.value);
-  // add inputBox reset later
+  resetSuggestions();
 })
 
-
+window.matchMedia("(max-width:1024px)").addEventListener("change", () => {
+  if (window.innerWidth < 1024) {
+    animateHeader();
+    animateSearchBox();
+  }
+  else {
+    animateChangeLayoutForLG();
+  }
+})
 
 
 

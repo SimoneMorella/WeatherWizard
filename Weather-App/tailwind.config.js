@@ -66,10 +66,6 @@ export default {
             transform: 'translateY(0)'
           }
         }
-      },
-      backgroundImage: {
-        dayBg: "url('src/img/dayBg.png')",
-        nightBg: "url('src/img/nightBg.png')"
       }
     },
     fontFamily: {

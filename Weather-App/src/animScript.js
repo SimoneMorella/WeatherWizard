@@ -4,6 +4,9 @@ const currentWeatherBox = document.querySelector("#weatherData");
 const weatherInfoBox = document.querySelector("#rightPartLG");
 
 export function animateHeader() {
+    if (header.classList.contains("hidden")) {
+        header.classList.remove("hidden");
+    }
     if (header.classList.contains("mt-2")) return;
     header.classList.remove("mt-8");
     header.classList.add("mt-2");

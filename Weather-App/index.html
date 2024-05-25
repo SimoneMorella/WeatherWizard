@@ -7,15 +7,15 @@
     <link rel="icon" type="image/png" href="src/img/ball-c.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body class="min-h-svh flex flex-col font-nunito text-white tracking-tight font-bold bg-gradient-to-l from-blue-300 to-fuchsia-400 bg-cover bg-fixed px-4">
+<body class="min-h-svh flex flex-col font-nunito text-white tracking-tight font-bold bg-gradient-to-l from-blue-300 to-fuchsia-400 bg-cover bg-fixed px-4 sm:px-24 md:px-40">
     <section class="flex-1">
         <section id="leftPartLG">
             <header id="header" class="mt-8 mr-7 flex justify-center items-center transition-all duration-300 ease-out">
-                <img src="src/img/ball-c.png" alt="crystal ball" width="56">
-                <h1 class="tracking-tight text-2xl font-extrabold text-white">Weather<span class="text-fuchsia-700">Wizard</span></h1>
+                <img src="src/img/ball-c.png" alt="crystal ball" class="w-14 sm:w-16">
+                <h1 class="tracking-tight text-2xl sm:text-3xl font-extrabold text-white">Weather<span class="text-fuchsia-700">Wizard</span></h1>
             </header>
             <section id="searchBox" class="mt-24 flex-1 relative transition-all duration-300">
-                <section id="searchInit" class=" flex flex-col items-center py-4 px-2 rounded-lg bg-white bg-opacity-25">
+                <section id="searchInit" class=" flex flex-col items-center py-4 px-2 sm:px-3 rounded-lg bg-white bg-opacity-25">
                     <h3 class="text-xl ">Oi! I'm the <span class="text-fuchsia-700">WeatherWizard</span></h3>
                     <p class="text-sm text-slate-500">Choose a location and I'll reveal the weather</p>
                     <form id="initSearch" class="mt-3 w-full flex flex-col justify-center px-2 relative">
@@ -27,23 +27,23 @@
                 <ul id="suggestions" class="mt-2 absolute left-0 z-10 overflow-hidden flex flex-col gap-[2px] w-full rounded-lg bg-white bg-opacity-60"></ul>
             </section>
             <section id="weatherData" class="hidden">
-                <section id="currentWBox" class="mt-4 w-full h-52 bg-cover rounded-lg flex flex-col justify-between p-4">
+                <section id="currentWBox" class="mt-4 w-full h-52 sm:h-60 bg-cover rounded-lg flex flex-col justify-between p-4 sm:p-6">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h4 id="cityName" class="text-lg font-extrabold">Barletta</h4>
-                            <p id="date" class="text-xs font-extrabold text-white text-opacity-60">Tuesday, May 21, 2024</p>
+                            <h4 id="cityName" class="text-lg sm:text-xl font-extrabold">Barletta</h4>
+                            <p id="date" class="text-xs sm:text-sm font-extrabold text-white text-opacity-60">Tuesday, May 21, 2024</p>
                         </div>
-                        <div id="time" class="text-sm mr-2">17:15</div>
+                        <div id="time" class="text-sm sm:text-base mr-2">17:15</div>
                     </div>
                     <div class="flex flex-row justify-between">
-                        <div class="flex flex-col justify-evenly">
-                            <h3 id="currentTemp" class="text-4xl mt-4">28°c</h3>
+                        <div class="flex flex-col justify-end">
+                            <h3 id="currentTemp" class="text-4xl sm:text-5xl mb-4">28°c</h3>
                             <div>
-                                <p id="min-max" class="text-sm font-extrabold">18°c / 28°c</p>
-                                <p id="weatherStatus" class="text-xs font-extrabold text-white text-opacity-60">Few Clouds</p>
+                                <p id="min-max" class="text-sm sm:text-base font-extrabold">18°c / 28°c</p>
+                                <p id="weatherStatus" class="text-xs sm:text-sm font-extrabold text-white text-opacity-60">Few Clouds</p>
                             </div>
                         </div>
-                        <img id="statusImg" src="src/img/ball-c.png" alt="weather Status Icon" width="120" height="80">
+                        <img id="statusImg" src="src/img/ball-c.png" alt="weather Status Icon" class="w-32 sm:w-36">
                     </div>
                 </section>
             </section>
@@ -59,60 +59,60 @@
         then i maybe solve the triangle search stuff to disappear (maybe)
         and then responsive and I finished -->
         <section id="rightPartLG" class="mt-4 w-full flex-col hidden">
-            <section id="weatherInfo" class="w-full rounded-lg overflow-hidden bg-white bg-opacity-20 text-gray-500 flex flex-col gap-[2px]">
-                <div class="flex w-full justify-between px-3 py-2 bg-white bg-opacity-30">
-                    <p class="flex items-center gap-2"><i class='bx bxs-thermometer text-xl'></i> Temperature felt</p>
+            <section id="weatherInfo" class="w-full sm:text-base rounded-lg overflow-hidden bg-white bg-opacity-20 text-gray-500 flex flex-col gap-[2px]">
+                <div class="flex w-full justify-between px-3 sm:px-5 py-2 sm:py-3 bg-white bg-opacity-30">
+                    <p class="flex items-center gap-2"><i class='bx bxs-thermometer text-xl sm:text-2xl'></i> Temperature felt</p>
                     <p id="feltTemp" class="flex items-center">29°c</p>
                 </div>
-                <div class="flex w-full justify-between px-3 py-2 bg-white bg-opacity-30">
-                    <p class="flex items-center gap-2"><i class='bx bx-cloud-light-rain text-xl'></i> Chance of Rain</p>
+                <div class="flex w-full justify-between px-3 sm:px-5 py-2 sm:py-3 bg-white bg-opacity-30">
+                    <p class="flex items-center gap-2"><i class='bx bx-cloud-light-rain text-xl sm:text-2xl'></i> Chance of Rain</p>
                     <p id="rainChance" class="flex items-center">30%</p>
                 </div>
-                <div class="flex w-full justify-between px-3 py-2 bg-white bg-opacity-30">
-                    <p class="flex items-center gap-2"><i class='bx bx-droplet text-xl'></i> Humidity</p>
+                <div class="flex w-full justify-between px-3 sm:px-5 py-2 sm:py-3 bg-white bg-opacity-30">
+                    <p class="flex items-center gap-2"><i class='bx bx-droplet text-xl sm:text-2xl'></i> Humidity</p>
                     <p id="humidity" class="flex items-center">53%</p>
                 </div>
-                <div class="flex w-full justify-between px-3 py-2 bg-white bg-opacity-30">
-                    <p class="flex items-center gap-2"><i class='bx bx-wind text-xl'></i> Wind Speed</p>
+                <div class="flex w-full justify-between px-3 sm:px-5 py-2 sm:py-3 bg-white bg-opacity-30">
+                    <p class="flex items-center gap-2"><i class='bx bx-wind text-xl sm:text-2xl'></i> Wind Speed</p>
                     <p id="windSpeed" class="flex items-center">29°c</p>
                 </div>
-                <div class="flex w-full justify-between px-3 py-2 bg-white bg-opacity-30">
-                    <p class="flex items-center gap-2"><i class='bx bx-sun text-xl' ></i> UV Index</p>
+                <div class="flex w-full justify-between px-3 sm:px-5 py-2 sm:py-3 bg-white bg-opacity-30">
+                    <p class="flex items-center gap-2"><i class='bx bx-sun text-xl sm:text-2xl' ></i> UV Index</p>
                     <p id="uvIndex" class="flex items-center">3</p>
                 </div>
             </section>
             <section id="nextForecast" class="w-full mt-4 flex gap-[2px] bg-white bg-opacity-15 rounded-lg overflow-hidden">
-                <section id="nextHours" class="w-1/2 flex flex-col bg-white bg-opacity-25 p-1">
-                    <h4 class="text-center font-extrabold">Next 3 hours</h4>
+                <section id="nextHours" class="w-1/2 flex flex-col bg-white bg-opacity-25 p-1 sm:p-3">
+                    <h4 class="text-center font-extrabold sm:text-lg">Next 3 hours</h4>
                     <div class="flex">
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
-                            <div id="hour-one" class="">1</div>
-                            <img id="hour-one-img" src="src/img/ball-c.png" alt="hour 1 weather" width="45">
-                            <div class="text-[12px] flex flex-col items-center">
+                            <div id="hour-one" class="sm:text-lg">1</div>
+                            <img id="hour-one-img" src="src/img/ball-c.png" alt="hour 1 weather" class="w-[45px] sm:w-[50px]">
+                            <div class="text-[12px] sm:text-base flex flex-col items-center">
                                 <span id="hour-one-temp">28°c</span>
-                                <div class="text-gray-500">
+                                <div class="text-gray-500 flex items-center gap-[2px]">
                                     <i class='bx bx-cloud-light-rain'></i>
                                     <span id="hour-one-rain">18°c </span>
                                 </div>
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
-                            <div id="hour-two" class="">2</div>
-                            <img id="hour-two-img" src="src/img/ball-c.png" alt="hour 2 weather" width="45">
-                            <div class="text-[12px] flex flex-col items-center">
+                            <div id="hour-two" class="sm:text-lg">2</div>
+                            <img id="hour-two-img" src="src/img/ball-c.png" alt="hour 2 weather" class="w-[45px] sm:w-[50px]">
+                            <div class="text-[12px] sm:text-base flex flex-col items-center">
                                 <span id="hour-two-temp">28°c</span>
-                                <div class="text-gray-500">
+                                <div class="text-gray-500 flex items-center gap-[2px]">
                                     <i class='bx bx-cloud-light-rain'></i>
                                     <span id="hour-two-rain">18°c </span>
                                 </div>
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
-                            <div id="hour-three" class="">3</div>
-                            <img id="hour-three-img" src="src/img/ball-c.png" alt="hour 3 weather" width="45">
-                            <div class="text-[12px] flex flex-col items-center">
+                            <div id="hour-three" class="sm:text-lg">3</div>
+                            <img id="hour-three-img" src="src/img/ball-c.png" alt="hour 3 weather" class="w-[45px] sm:w-[50px]">
+                            <div class="text-[12px] sm:text-base flex flex-col items-center">
                                 <span id="hour-three-temp">28°c</span>
-                                <div class="text-gray-500">
+                                <div class="text-gray-500 flex items-center gap-[2px]">
                                     <i class='bx bx-cloud-light-rain'></i>
                                     <span id="hour-three-rain">18°c </span>
                                 </div>
@@ -120,31 +120,31 @@
                         </div>
                     </div>
                 </section>
-                <section id="nextDays" class="w-1/2 flex flex-col bg-white bg-opacity-25 p-1">
-                    <h4 class="text-center font-extrabold">Next 3 Days</h4>
+                <section id="nextDays" class="w-1/2 flex flex-col bg-white bg-opacity-25 p-1 sm:p-3">
+                    <h4 class="text-center font-extrabold sm:text-lg">Next 3 Days</h4>
                     <div class="flex">
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
-                            <div id="day-one" class="">1</div>
-                            <img id="day-one-img" src="src/img/ball-c.png" alt="day 1 weather" width="45">
-                            <div class="text-[12px] flex flex-col items-center">
+                            <div id="day-one" class="sm:text-lg">1</div>
+                            <img id="day-one-img" src="src/img/ball-c.png" alt="day 1 weather" class="w-[45px] sm:w-[50px]">
+                            <div class="text-[12px] sm:text-base flex flex-col items-center">
                                 <span id="day-one-max">28°c</span>
                                 <span id="day-one-min" class="text-gray-500">18°c </span>
                                 
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
-                            <div id="day-two" class="">2</div>
-                            <img id="day-two-img" src="src/img/ball-c.png" alt="day 2 weather" width="45">
-                            <div class="text-[12px] flex flex-col items-center">
+                            <div id="day-two" class="sm:text-lg">2</div>
+                            <img id="day-two-img" src="src/img/ball-c.png" alt="day 2 weather" class="w-[45px] sm:w-[50px]">
+                            <div class="text-[12px] sm:text-base flex flex-col items-center">
                                 <span id="day-two-max">28°c</span>
                                 <span id="day-two-min" class="text-gray-500">18°c </span>
                                 
                             </div>
                         </div>
                         <div class="flex-1 flex flex-col items-center gap-[2px] p-1">
-                            <div id="day-three" class="">3</div>
-                            <img id="day-three-img" src="src/img/ball-c.png" alt="day 3 weather" width="45">
-                            <div class="text-[12px] flex flex-col items-center">
+                            <div id="day-three" class="sm:text-lg">3</div>
+                            <img id="day-three-img" src="src/img/ball-c.png" alt="day 3 weather" class="w-[45px] sm:w-[50px]">
+                            <div class="text-[12px] sm:text-base flex flex-col items-center">
                                 <span id="day-three-max">28°c</span>
                                 <span id="day-three-min" class="text-gray-500">18°c </span>
                                 

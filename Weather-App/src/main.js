@@ -36,7 +36,6 @@ searchForm.addEventListener("submit", async (e) => {
   let query = inputBox.value;
   // maybe I can add a loading shit 
   const weatherCheck = await handleWeatherData(query);  
-  console.log(weatherCheck);
   if (weatherCheck) {
     animateHeader();
     animateSearchBox();
@@ -44,6 +43,7 @@ searchForm.addEventListener("submit", async (e) => {
     animateWeatherInfoBox();
   }
   inputBox.value = "";
+  inputCheck(inputBox.value);
   // add inputBox reset later
 })
 

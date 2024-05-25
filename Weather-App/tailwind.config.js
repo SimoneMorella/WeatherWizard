@@ -38,9 +38,6 @@ export default {
           '0%': {
             opacity: '1'
           },
-          '50%': {
-            opacity: '0.5'
-          },
           '100%': {
             opacity: '0',
           }
@@ -48,9 +45,6 @@ export default {
         fadingInNoScale: {
           '0%': {
             opacity: '0'
-          },
-          '50%': {
-            opacity: '0.5'
           },
           '100%': {
             opacity: '1'

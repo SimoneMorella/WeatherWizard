@@ -12,6 +12,7 @@ const inputBox = document.querySelector("form input");
 const suggestionsBox = document.querySelector("ul");
 const searchForm = document.querySelector("#initSearch");
 
+let submitted = false;
 
 inputBox.addEventListener("input", async () => {
   let query = inputBox.value;
@@ -50,15 +51,20 @@ searchForm.addEventListener("submit", async (e) => {
   inputBox.value = "";
   inputCheck(inputBox.value);
   resetSuggestions();
+  submitted = true;
 })
 
 window.matchMedia("(max-width:1024px)").addEventListener("change", () => {
-  if (window.innerWidth < 1024) {
-    animateHeader();
-    animateSearchBox();
+  if (window.matchMedia("(max-width:1024px)").matches) {
+    if (submitted) {
+      animateHeader();
+      animateSearchBox();
+    }
   }
   else {
-    animateChangeLayoutForLG();
+    if (submitted) {
+      animateChangeLayoutForLG();
+    }
   }
 })
 

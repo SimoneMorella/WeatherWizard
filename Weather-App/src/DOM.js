@@ -227,11 +227,12 @@ export function showSuggestions() {
 }
 
 export async function animateChangeLayoutForLG() {
+  mainBox.classList.remove("animate-fadeInNoScale")
   mainBox.classList.add("animate-fadeOutNoScale");
   await delay();
   header.classList.add("hidden");
   leftPartBox.classList.add("lg:h-[620px]", "lg:bg-white", "lg:bg-opacity-15", "lg:rounded-lg");
-  mainBox.classList.remove("animate-fadeOutNoScale")
+  mainBox.classList.remove("animate-fadeOutNoScale");
   mainBox.classList.add("animate-fadeInNoScale");
   header.classList.remove("mt-8", "mr-7");
   searchBox.classList.remove("mt-24", "lg:w-[500px]");

@@ -222,7 +222,7 @@ export function showSuggestions() {
 
 export function showError(error) {
   errorDialog.showModal();
-  errorDialog.classList.add("flex", "flex-col", "items-center", "gap-2", "animate-fadeIn")
+  errorDialog.classList.add("flex", "flex-col", "items-center", "gap-2", "animate-fadeIn", "sm:gap-4")
   errorMsg.textContent = error;
 
 }

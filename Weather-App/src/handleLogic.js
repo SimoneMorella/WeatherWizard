@@ -101,22 +101,22 @@ export async function handleWeatherData(query) {
       nextHours[2].temp_c
     );
     manageFirstDayValues(
-       getDay(forecastInfo[1].date),
-       forecastInfo[1].day.condition.icon,
-       forecastInfo[1].day.mintemp_c,
-       forecastInfo[1].day.maxtemp_c
+       getDay(forecastInfo[0].date),
+       forecastInfo[0].day.condition.icon,
+       forecastInfo[0].day.mintemp_c,
+       forecastInfo[0].day.maxtemp_c
     );
     manageSecondDayValues(
+      getDay(forecastInfo[1].date),
+      forecastInfo[1].day.condition.icon,
+      forecastInfo[1].day.mintemp_c,
+      forecastInfo[1].day.maxtemp_c
+    );
+    manageThirdDayValues(
       getDay(forecastInfo[2].date),
       forecastInfo[2].day.condition.icon,
       forecastInfo[2].day.mintemp_c,
       forecastInfo[2].day.maxtemp_c
-    );
-    manageThirdDayValues(
-      getDay(forecastInfo[3].date),
-      forecastInfo[3].day.condition.icon,
-      forecastInfo[3].day.mintemp_c,
-      forecastInfo[3].day.maxtemp_c
     )
     return true;
 

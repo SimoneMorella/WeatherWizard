@@ -36,8 +36,8 @@ suggestionsBox.addEventListener("click", (e) => {
 searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   let query = inputBox.value;
-  // maybe I can add a loading shit 
-  const weatherCheck = await handleWeatherData(query);  
+  // maybe I can add a loading 
+  const weatherCheck = await handleWeatherData(query);
   if (weatherCheck) {
     if (!window.matchMedia("(min-width: 1024px)").matches) {
       animateHeader();
@@ -67,7 +67,3 @@ window.matchMedia("(max-width:1024px)").addEventListener("change", () => {
     }
   }
 })
-
-
-
-

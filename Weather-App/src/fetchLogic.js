@@ -14,7 +14,7 @@ export async function fetchLocationOnInput(searchValue) {
 export async function fetchForecastInfo(search) {
     try {
       let response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=329fad4d4a1143e7bd2154311241705&q=${search}&days=4`,
+        `http://api.weatherapi.com/v1/forecast.json?key=329fad4d4a1143e7bd2154311241705&q=${search}&days=5`,
         { mode: "cors" }
       );
       if (!response.ok) {
